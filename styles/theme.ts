@@ -2,9 +2,12 @@
 // vscode extension; Tailwind Shades: ctrl+k ctrl+g: setup color palette for 1 color:
 // ctrl+g -> > Sort Lines Descending
 
-type colorMode = "dark" | "light";
+import { createContext, useMemo, useState } from "react";
+import { createTheme } from "@mui/material/styles";
+
+type ColorModes = "dark" | "light";
 // color design tokens export
-export const tokens = (mode: colorMode) => ({
+export const tokens = (mode: ColorModes) => ({
   ...(mode === "dark"
     ? {
         grey: {
@@ -122,8 +125,7 @@ export const tokens = (mode: colorMode) => ({
       }),
 });
 
-// mui theme settings
-export const themeSettings = (mode: colorMode) => {
+export const muiThemeSettings = (mode: ColorModes) => {
   const colors = tokens(mode);
   return {
     palette: {
@@ -193,4 +195,23 @@ export const themeSettings = (mode: colorMode) => {
       },
     },
   };
+};
+
+export const ColorModeContext = createContext({
+  toggleColorMode: () => {},
+});
+
+export const useMode = () => {
+  const [mode, setMode] = useState<ColorModes>("light");
+
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () =>
+        setMode((prev) => (prev === "light" ? "dark" : "light")),
+    }),
+    []
+  );
+
+  const theme = useMemo(() => createTheme(muiThemeSettings(mode)), [mode]);
+  return [theme, colorMode];
 };

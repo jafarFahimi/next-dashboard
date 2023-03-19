@@ -1,8 +1,8 @@
 import { NextPage } from "next";
 import React from "react";
 
-const HomePage: NextPage = () => {
-  return <div>HomePage</div>;
+const Dashboard: NextPage = () => {
+  return <div>Dashboard</div>;
 };
 
-export default HomePage;
+export default Dashboard;

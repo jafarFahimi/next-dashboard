@@ -1,6 +1,5 @@
 import { AppProps } from "next/app";
 import { CssBaseline, ThemeProvider } from "@mui/material";
-import "../styles/globals.css";
 import "../styles/style.css";
 import Head from "next/head";
 import { ColorModeContext, useMode } from "../styles/theme";

@@ -27,6 +27,7 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
   const colors = tokens(theme.palette.mode);
 
   return (
+    // MenuItem has 
     <MenuItem
       active={selected === title}
       style={{

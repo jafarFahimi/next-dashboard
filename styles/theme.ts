@@ -4,6 +4,7 @@
 
 import { createContext, useMemo, useState } from "react";
 import { createTheme } from "@mui/material/styles";
+import { Theme } from "@emotion/react";
 
 type ColorModes = "dark" | "light";
 // color design tokens export
@@ -197,7 +198,7 @@ export const muiThemeSettings = (mode: ColorModes) => {
   };
 };
 
-export const ColorModeContext = createContext({
+export const ColorModeContext = createContext<Theme>({
   toggleColorMode: () => {},
 });
 

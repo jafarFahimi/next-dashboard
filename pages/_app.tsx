@@ -1,8 +1,10 @@
 import { AppProps } from "next/app";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import "../styles/globals.css";
 import "../styles/style.css";
 import Head from "next/head";
 import { ColorModeContext, useMode } from "../styles/theme";
+import { Theme } from "@emotion/react";
 // CssBaseline reset css
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
@@ -15,7 +17,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
       </Head>
 
       <ColorModeContext.Provider value={colorMode}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme as Theme}>
           <CssBaseline />
           <main className="content">
             <Component {...pageProps} />

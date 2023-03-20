@@ -7,7 +7,7 @@ import { createTheme } from "@mui/material/styles";
 import { Theme } from "@emotion/react";
 
 type ColorModes = "dark" | "light";
-// color design tokens export
+// color design tokens export; based on colorModes export different {color}
 export const tokens = (mode: ColorModes) => ({
   ...(mode === "dark"
     ? {
@@ -128,6 +128,7 @@ export const tokens = (mode: ColorModes) => ({
 
 export const muiThemeSettings = (mode: ColorModes) => {
   const colors = tokens(mode);
+
   return {
     palette: {
       mode: mode,

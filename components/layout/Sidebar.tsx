@@ -13,7 +13,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { tokens } from "../../styles/theme";
+import { tokens, useStyles } from "../../styles/theme";
 
 type ItemType = {
   title: string;
@@ -25,14 +25,17 @@ type ItemType = {
 const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const styleClasses = useStyles(); // local
 
   return (
-    // MenuItem has 
+    // MenuItem has its own hover effect
     <MenuItem
-      active={selected === title}
       style={{
         color: colors.grey[100],
+        backgroundColor: colors.primary[400],
       }}
+      className={styleClasses.itemHover}
+      active={selected === title}
       onClick={() => setSelected(title)}
       icon={icon}
       href={to}

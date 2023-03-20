@@ -4,6 +4,7 @@
 
 import { createContext, useMemo, useState } from "react";
 import { createTheme } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import { Theme } from "@emotion/react";
 
 type ColorModes = "dark" | "light";
@@ -204,7 +205,7 @@ export const ColorModeContext = createContext<Theme>({
 });
 
 export const useMode = () => {
-  const [mode, setMode] = useState<ColorModes>("dark");
+  const [mode, setMode] = useState<ColorModes>("light");
 
   const colorMode = useMemo(
     () => ({
@@ -217,3 +218,15 @@ export const useMode = () => {
   const theme = useMemo(() => createTheme(muiThemeSettings(mode)), [mode]);
   return [theme, colorMode];
 };
+
+// This expression is not callable. Type 'never' has no call signatures
+// means; let a:never = {}; a();    :any solved d problem!
+
+export const useStyles: any = makeStyles({
+  itemHover: {
+    "& :hover": {
+      opacity: "0.90",
+      textDecoration: "underline",
+    },
+  },
+});

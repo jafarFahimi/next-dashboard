@@ -38,7 +38,7 @@ const Form: NextPage = () => {
                 variant="filled"
                 type="text"
                 label="First Name"
-                onBlur={handleBlur}
+                onBlur={handleBlur} // the func when u touch it or out of it.
                 onChange={handleChange}
                 value={values.firstName}
                 name="firstName"

@@ -103,7 +103,7 @@ const Calendar = () => {
             variant="contained"
             color="secondary"
           >
-            Enter Event
+            Add Event
           </Button>
         </Box>
       </Modal>
@@ -147,6 +147,7 @@ const Calendar = () => {
                   }
                 />
                 <IconButton
+                  title="Delete Event"
                   onClick={() => event.remove()}
                   sx={{ "&:hover": { color: "green" } }}
                 >

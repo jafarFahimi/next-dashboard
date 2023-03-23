@@ -317,6 +317,7 @@ export const mockTransactions = [
   },
 ];
 
+// from nivo website
 export const mockBarData = [
   {
     country: "AD",

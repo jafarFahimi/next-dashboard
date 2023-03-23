@@ -77,6 +77,7 @@ const Team: NextPage = () => {
         m="40px 0 0 0"
         height="75vh"
         sx={{
+          //sx; to style inner elements by their className
           "& .MuiDataGrid-root": {
             border: "none",
           },

@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import { Container, CssBaseline, ThemeProvider } from "@mui/material"; // CssBaseline reset css
+import { CssBaseline, ThemeProvider } from "@mui/material"; // CssBaseline reset css
 import "../styles/style.css";
 import Head from "next/head";
 import { ColorModeContext, useMode } from "../styles/theme";
@@ -28,9 +28,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
               <Sidebar isSidebar={isSidebar} />
               <main className="content">
                 <Navbar setIsSidebar={setIsSidebar} />
-                <Container>
-                  <Component {...pageProps} />
-                </Container>
+                <Component {...pageProps} />
               </main>
             </div>
           </ProSidebarProvider>

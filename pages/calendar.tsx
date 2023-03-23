@@ -78,16 +78,19 @@ const Calendar = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             width: 400,
-            bgcolor: "background.paper",
+            bgcolor: colors.primary[400],
+            color: colors.grey[100],
             border: "2px solid #000",
             boxShadow: 24,
             p: 4,
           }}
         >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Please enter a new title for your event:
+          <Typography id="modal-modal-title" variant="h4" component="h2">
+            Enter Event Title :
           </Typography>
           <Input
+            style={{ margin: "1rem 0", fontSize: "1.1rem" }}
+            placeholder="New Event"
             type="text"
             fullWidth
             value={eventText}

@@ -22,17 +22,22 @@ type ItemType = {
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
 };
+
 const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const styleClasses = useStyles(); // local
 
   return (
-    // MenuItem has its own hover effect
+    // MenuItem has its own hover effect // rootStyles hover took 10 hr!
     <MenuItem
-      style={{
+      rootStyles={{
         color: colors.grey[100],
         backgroundColor: colors.primary[400],
+        ":hover": {
+          color: colors.primary[300],
+          backgroundColor: "black",
+        },
       }}
       className={styleClasses.itemHover}
       active={selected === title}
@@ -50,26 +55,8 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
 const SidebarComp: React.FC<any> = ({ isSidebar }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
-
-  // sx={{
-  //   "& .pro-sidebar-inner": {
-  //     background: `${colors.primary[400]} !important`,
-  //   },
-  //   "& .pro-icon-wrapper": {
-  //     backgroundColor: "transparent !important",
-  //   },
-  //   "& .pro-inner-item": {
-  //     padding: "5px 35px 5px 20px !important",
-  //   },
-  //   "& .pro-inner-item:hover": {
-  //     color: "#868dfb !important",
-  //   },
-  //   "& .pro-menu-item.active": {
-  //     color: "#6870fa !important",
-  //   },
-  // }}
+  const [isCollapsed, setIsCollapsed] = useState(false); // show wether sidebar is collapsed or not.
+  const [selected, setSelected] = useState("Dashboard"); //specify which page we r at.
 
   return (
     <Box>
@@ -83,9 +70,15 @@ const SidebarComp: React.FC<any> = ({ isSidebar }) => {
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
-            style={{
+            style={{}}
+            rootStyles={{
               margin: "10px 0 12px 0",
               color: colors.grey[100],
+              backgroundColor: colors.primary[400],
+              ":hover": {
+                color: colors.primary[300],
+                backgroundColor: "black",
+              },
             }}
           >
             {!isCollapsed && (
@@ -95,12 +88,10 @@ const SidebarComp: React.FC<any> = ({ isSidebar }) => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[100]}>
-                  ADMIN
-                </Typography>
-                <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
+                <Typography variant="h3">ADMIN</Typography>
+                <span onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
-                </IconButton>
+                </span>
               </Box>
             )}
           </MenuItem>

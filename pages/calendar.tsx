@@ -1,56 +1,109 @@
 import { useState } from "react";
 import {
   Box,
+  Button,
+  IconButton,
+  Input,
   List,
   ListItem,
   ListItemText,
+  Modal,
   Typography,
   useTheme,
 } from "@mui/material";
 import Header from "components/Header";
 import { tokens } from "styles/theme";
 
+import { EventApi, EventInput } from "@fullcalendar/core";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { formatDate } from "@fullcalendar/core";
+import { GridDeleteIcon } from "@mui/x-data-grid";
 
 const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [currentEvents, setCurrentEvents] = useState([]);
+  const [currentEvents, setCurrentEvents] = useState<EventApi[] | []>([]);
+  const [open, setOpen] = useState(false);
+  const [eventText, setEventText] = useState<string | undefined>(undefined);
+  const [selectedEvent, setSelectedEvent] = useState<null | EventInput>(null);
 
-  const handleDateClick = (selected: any) => {
-    const title = prompt("Please enter a new title for your event");
-    const calendarApi = selected.view.calendar;
-    calendarApi.unselect();
-
-    if (title) {
+  const handleDateClick = () => {
+    const calendarApi = selectedEvent?.view.calendar;
+    if (eventText) {
       calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
-        title,
-        start: selected.startStr,
-        end: selected.endStr,
-        allDay: selected.allDay,
+        id: `${selectedEvent?.dateStr}-${eventText}`,
+        title: eventText,
+        start: selectedEvent?.startStr,
+        end: selectedEvent?.endStr,
+        allDay: selectedEvent?.allDay,
       });
     }
+    setSelectedEvent(null);
+    calendarApi.unselect();
+
+    setEventText(undefined);
+    setOpen(false);
   };
 
-  const handleEventClick = (selected: any) => {
+  const handleEventClick = (selected: EventInput) => {
     if (
       window.confirm(
         `Are you sure you want to delete the event '${selected.event.title}'`
       )
-    ) {
+    )
       selected.event.remove();
-    }
   };
 
   return (
     <Box m="20px">
       <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
+      {/* user enter its event text in this input: */}
+      <Modal
+        open={open}
+        onClose={() => {
+          setOpen(false);
+          setEventText(undefined);
+        }}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute" as "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            bgcolor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Please enter a new title for your event:
+          </Typography>
+          <Input
+            type="text"
+            fullWidth
+            value={eventText}
+            onChange={(e: any) => setEventText(e.target?.value)}
+          />
+          <br />
+          <br />
+          <Button
+            onClick={handleDateClick}
+            variant="contained"
+            color="secondary"
+          >
+            Enter Event
+          </Button>
+        </Box>
+      </Modal>
 
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
@@ -62,7 +115,7 @@ const Calendar = () => {
         >
           <Typography variant="h5">Events</Typography>
           <List>
-            {currentEvents.map((event: any) => (
+            {currentEvents.map((event: EventApi) => (
               <ListItem
                 key={event.id}
                 sx={{
@@ -75,14 +128,27 @@ const Calendar = () => {
                   primary={event.title}
                   secondary={
                     <Typography>
-                      {formatDate(event.start, {
+                      {formatDate(event.start as Date, {
                         year: "numeric",
                         month: "short",
                         day: "numeric",
                       })}
+                      {event.end
+                        ? ` to ${formatDate(event.end as Date, {
+                            year: "numeric",
+                            month: "short",
+                            day: "numeric",
+                          })}`
+                        : undefined}
                     </Typography>
                   }
                 />
+                <IconButton
+                  onClick={() => event.remove()}
+                  sx={{ "&:hover": { color: "green" } }}
+                >
+                  <GridDeleteIcon />
+                </IconButton>
               </ListItem>
             ))}
           </List>
@@ -108,9 +174,14 @@ const Calendar = () => {
             selectable={true}
             selectMirror={true}
             dayMaxEvents={true}
-            select={handleDateClick}
+            select={(selected: EventInput) => {
+              setSelectedEvent(selected);
+              setOpen(true);
+            }}
             eventClick={handleEventClick}
-            eventsSet={(events: any) => setCurrentEvents(events)}
+            eventsSet={(events: EventApi[]) =>
+              setCurrentEvents(events as EventApi[])
+            }
             initialEvents={[
               {
                 id: "12315",

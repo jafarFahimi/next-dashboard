@@ -26,7 +26,7 @@ export const tokens = (mode: ColorModes) => ({
         primary: {
           100: "#d0d1d5",
           200: "#a1a4ab",
-          300: "#727681",
+          300: "#040509", // manually changed to primary[900] for sidebar MenuItem hover.
           400: "#1F2A40",
           500: "#141b2d",
           600: "#101624",

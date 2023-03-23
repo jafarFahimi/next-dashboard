@@ -1,5 +1,5 @@
 import { AppProps } from "next/app";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { Container, CssBaseline, ThemeProvider } from "@mui/material"; // CssBaseline reset css
 import "../styles/style.css";
 import Head from "next/head";
 import { ColorModeContext, useMode } from "../styles/theme";
@@ -8,16 +8,15 @@ import Navbar from "../components/layout/Navbar";
 import { useState } from "react";
 import Sidebar from "../components/layout/Sidebar";
 import { ProSidebarProvider } from "react-pro-sidebar";
-// CssBaseline reset css
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
-  const [theme, colorMode] = useMode();
+  const [theme, colorMode]: any = useMode();
   const [isSidebar, setIsSidebar] = useState(true);
 
   return (
     <>
       <Head>
-        <title>Next Admin Dashboard Design</title>
+        <title>Admin Dashboard Design</title>
         <link rel="icon" href="chart-logo.png" />
       </Head>
 
@@ -29,7 +28,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
               <Sidebar isSidebar={isSidebar} />
               <main className="content">
                 <Navbar setIsSidebar={setIsSidebar} />
-                <Component {...pageProps} />
+                <Container>
+                  <Component {...pageProps} />
+                </Container>
               </main>
             </div>
           </ProSidebarProvider>

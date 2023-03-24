@@ -1,4 +1,4 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
 import { useContext } from "react";
 import { ColorModeContext, tokens } from "styles/theme";
 import InputBase from "@mui/material/InputBase";
@@ -13,11 +13,24 @@ const Navbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode1 = useContext(ColorModeContext);
+  const isNonMobile = useMediaQuery("(min-width:400px)");
 
   return (
-    <Box display="flex" justifyContent="space-between" py={2}>
+    <Box
+      display="flex"
+      flexDirection={`${isNonMobile ? "row" : "column"}`}
+      alignItems={`${isNonMobile ? "start" : "end"}`}
+      justifyContent="space-between"
+      p={2}
+    >
       {/* SEARCH BAR */}
-      <Box display="flex" bgcolor={colors.primary[400]} borderRadius="3px">
+      <Box
+        display="flex"
+        marginY={`${isNonMobile ? "0" : "5px"}`}
+        width={`${isNonMobile ? "auto" : "100%"}`}
+        bgcolor={colors.primary[400]}
+        borderRadius="3px"
+      >
         <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
         <IconButton type="button" sx={{ p: 1 }}>
           <SearchIcon />

@@ -2,7 +2,6 @@ import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { mockBarData } from "../data/mockData";
 import { tokens } from "styles/theme";
-import { Colors } from "@nivo/core";
 import { NextPage } from "next";
 
 // is used in dashboard & another page
@@ -54,7 +53,7 @@ const BarChart: NextPage<{ isDashboard: boolean }> = ({
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
-      // colors={{ scheme: "nivo" }}
+      colors={{ scheme: "nivo" }}
       defs={[
         {
           id: "dots",
@@ -89,12 +88,12 @@ const BarChart: NextPage<{ isDashboard: boolean }> = ({
           id: "lines",
         },
       ]}
-      // borderColor={{
-      //   from: "color",
-      //   modifiers: [["darker", 1.6]],
-      // }}
-      // axisTop={null}
-      // axisRight={null}
+      borderColor={{
+        from: "color",
+        modifiers: [["darker", 1.6]],
+      }}
+      axisTop={null}
+      axisRight={null}
       axisBottom={{
         tickSize: 5,
         tickPadding: 5,
@@ -113,10 +112,10 @@ const BarChart: NextPage<{ isDashboard: boolean }> = ({
       }}
       labelSkipWidth={12}
       labelSkipHeight={12}
-      // labelTextColor={{
-      //   from: "color",
-      //   modifiers: [["darker", 1.6]],
-      // }}
+      labelTextColor={{
+        from: "color",
+        modifiers: [["darker", 1.6]],
+      }}
       legends={[
         {
           dataFrom: "keys",

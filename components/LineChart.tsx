@@ -47,8 +47,7 @@ const LineChart: React.FC<{
           },
         },
       }}
-      //   colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
-      colors={isDashboard ? "accent" : "nivo"} // added
+      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={
@@ -60,11 +59,11 @@ const LineChart: React.FC<{
           reverse: false,
         } as any
       }
-      // yFormat=" >-.2f"
-      //   curve="catmullRom"
-      curve="linear"
-      //   axisTop={null}
-      //   axisRight={null}
+      yFormat=" >-.2f"
+      curve="catmullRom"
+      // curve="linear"
+      axisTop={null}
+      axisRight={null}
       axisBottom={{
         // orient: "bottom",
         tickSize: 0,
@@ -86,12 +85,12 @@ const LineChart: React.FC<{
       }}
       enableGridX={false}
       enableGridY={false}
-      //   pointSize={8}
-      //   pointColor={{ theme: "background" }}
-      //   pointBorderWidth={2}
-      //   pointBorderColor={{ from: "serieColor" }}
-      //   pointLabelYOffset={-12}
-      //   useMesh={true}
+      pointSize={8}
+      pointColor={{ theme: "background" }}
+      pointBorderWidth={2}
+      pointBorderColor={{ from: "serieColor" }}
+      pointLabelYOffset={-12}
+      useMesh={true}
       legends={[
         {
           anchor: "bottom-right",
@@ -106,7 +105,7 @@ const LineChart: React.FC<{
           itemOpacity: 0.75,
           symbolSize: 12,
           symbolShape: "circle",
-          //   symbolBorderColor: "rgba(0, 0, 0, .5)",
+          symbolBorderColor: "rgba(0, 0, 0, .5)",
           effects: [
             {
               on: "hover",

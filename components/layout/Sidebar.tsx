@@ -52,7 +52,7 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
 
 // Type '{ isSidebar: boolean; }' is not assignable to type 'IntrinsicAttributes' ;
 // if React.FC=(props:any) => {}
-const SidebarComp: React.FC<any> = ({ isSidebar }) => {
+const SidebarComp: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(true); // wether sidebar is collapsed or not.

@@ -5,13 +5,11 @@ import Head from "next/head";
 import { ColorModeContext, useMode } from "../styles/theme";
 import { Theme } from "@emotion/react";
 import Navbar from "../components/layout/Navbar";
-import { useState } from "react";
 import Sidebar from "../components/layout/Sidebar";
 import { ProSidebarProvider } from "react-pro-sidebar";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   const [theme, colorMode]: any = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
     <>
@@ -25,9 +23,9 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <ProSidebarProvider>
             <CssBaseline />
             <div className="app">
-              <Sidebar isSidebar={isSidebar} />
+              <Sidebar />
               <main className="content">
-                <Navbar setIsSidebar={setIsSidebar} />
+                <Navbar />
                 <Component {...pageProps} />
               </main>
             </div>

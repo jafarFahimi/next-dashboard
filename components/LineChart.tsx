@@ -11,6 +11,7 @@ const LineChart: React.FC<{
   const colors = tokens(theme.palette.mode);
 
   return (
+    // commented props though exists on nivo.rocks/line code but in here makes error! weird!
     <ResponsiveLine
       data={mockLineData}
       theme={{
@@ -46,8 +47,8 @@ const LineChart: React.FC<{
           },
         },
       }}
-      // colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
-      colors={isDashboard ? "color" : "nivo"} // added
+      //   colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
+      colors={isDashboard ? "accent" : "nivo"} // added
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={
@@ -59,7 +60,7 @@ const LineChart: React.FC<{
           reverse: false,
         } as any
       }
-      //   yFormat=" >-.2f"
+      // yFormat=" >-.2f"
       //   curve="catmullRom"
       curve="linear"
       //   axisTop={null}

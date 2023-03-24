@@ -173,7 +173,16 @@ const Dashboard: NextPage = () => {
                 </IconButton>
               </Box>
             </Box>
-            <Box height="250px" m="-20px 0 0 0">
+            <Box
+              height="250px"
+              m="-20px 0 0 0"
+              onClick={() => router.push("line")}
+              sx={{
+                "&:hover": {
+                  cursor: "pointer",
+                },
+              }}
+            >
               <LineChart isDashboard={true} />
             </Box>
           </Box>

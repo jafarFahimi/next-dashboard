@@ -200,7 +200,7 @@ export const muiThemeSettings = (mode: ColorModes) => {
   };
 };
 
-// context for color mode
+// context for color mode change (dark<->light)
 export const ColorModeContext = createContext<{ toggleColorMode: () => void }>({
   toggleColorMode: () => {},
 });

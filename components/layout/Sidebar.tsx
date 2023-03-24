@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
@@ -57,10 +57,18 @@ const SidebarComp: React.FC = () => {
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(true); // wether sidebar is collapsed or not.
   const [selected, setSelected] = useState("Dashboard"); //specify which page we r at.
+  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   return (
     <Box>
-      <Sidebar defaultCollapsed={isCollapsed}>
+      <Sidebar
+        style={{
+          position: `${!isCollapsed && !isNonMobile ? "absolute" : "relative"}`,
+          left: "0",
+          top: "0",
+        }}
+        defaultCollapsed={isCollapsed}
+      >
         <Menu
           style={{
             backgroundColor: colors.primary[400],
@@ -122,7 +130,7 @@ const SidebarComp: React.FC = () => {
             </Box>
           )}
 
-          <Box paddingLeft={isCollapsed ? undefined : "1px"} sx={{}}>
+          <Box>
             <Item
               title="Dashboard"
               to="/"

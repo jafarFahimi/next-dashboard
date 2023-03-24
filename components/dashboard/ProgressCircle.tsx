@@ -1,7 +1,7 @@
 import { Box, useTheme } from "@mui/material";
 import { tokens } from "styles/theme";
 
-const ProgressCircle: React.FC<{ progress: string; size: string }> = ({
+const ProgressCircle: React.FC<{ progress: string; size?: string }> = ({
   progress = "0.75",
   size = "40",
 }) => {

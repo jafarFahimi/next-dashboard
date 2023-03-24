@@ -200,13 +200,12 @@ export const muiThemeSettings = (mode: ColorModes) => {
   };
 };
 
-export const ColorModeContext = createContext<Theme>({
+// context for color mode
+export const ColorModeContext = createContext<{ toggleColorMode: () => void }>({
   toggleColorMode: () => {},
 });
-
 export const useMode = () => {
-  const [mode, setMode] = useState<ColorModes>("dark");
-
+  const [mode, setMode] = useState("dark");
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () =>
@@ -214,14 +213,15 @@ export const useMode = () => {
     }),
     []
   );
-
-  const theme = useMemo(() => createTheme(muiThemeSettings(mode)), [mode]);
+  const theme = useMemo(
+    () => createTheme(muiThemeSettings(mode as unknown as ColorModes)),
+    [mode]
+  );
   return [theme, colorMode];
 };
 
 // This expression is not callable. Type 'never' has no call signatures
-// means; let a:never = {}; a();    :any solved d problem!
-
+// means; let a:never = {}; a();    a:any solved d problem!
 export const useStyles: any = makeStyles({
   itemHover: {
     "& :hover": {

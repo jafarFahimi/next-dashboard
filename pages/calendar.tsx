@@ -9,6 +9,7 @@ import {
   ListItemText,
   Modal,
   Typography,
+  useMediaQuery,
   useTheme,
 } from "@mui/material";
 import Header from "components/Header";
@@ -57,6 +58,7 @@ const Calendar = () => {
     )
       selected.event.remove();
   };
+  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   return (
     <Box m="20px">
@@ -108,9 +110,14 @@ const Calendar = () => {
         </Box>
       </Modal>
 
-      <Box display="flex" justifyContent="space-between">
+      <Box
+        display="flex"
+        sx={{ flexDirection: isNonMobile ? "row" : "column" }}
+        justifyContent="space-between"
+      >
         {/* CALENDAR SIDEBAR */}
         <Box
+          marginBottom={isNonMobile ? "0" : "40px"}
           flex="1 1 20%"
           bgcolor={colors.primary[400]}
           p="15px"

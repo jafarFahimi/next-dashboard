@@ -55,7 +55,7 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
 const SidebarComp: React.FC<any> = ({ isSidebar }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [isCollapsed, setIsCollapsed] = useState(false); // show wether sidebar is collapsed or not.
+  const [isCollapsed, setIsCollapsed] = useState(true); // wether sidebar is collapsed or not.
   const [selected, setSelected] = useState("Dashboard"); //specify which page we r at.
 
   return (

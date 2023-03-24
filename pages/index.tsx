@@ -22,7 +22,13 @@ const Dashboard: NextPage = () => {
   const router = useRouter();
 
   return (
-    <Box m="20px">
+    <Box
+      sx={{
+        marginY: "20px",
+        marginLeft: { xs: "20px" },
+        marginRight: { xs: "10px", md: "20px" },
+      }}
+    >
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
@@ -33,7 +39,8 @@ const Dashboard: NextPage = () => {
               color: colors.grey[100],
               fontSize: "14px",
               fontWeight: "bold",
-              padding: "10px 20px",
+              padding: "10px",
+              marginRight: { md: "10px" },
             }}
           >
             <DownloadOutlinedIcon sx={{ mr: "10px" }} />
@@ -50,9 +57,17 @@ const Dashboard: NextPage = () => {
           gridTemplateColumns="repeat(12, 1fr)"
           gridAutoRows="140px"
           gap="20px"
+          
         >
           <Box
-            gridColumn="span 3"
+            sx={{
+              gridColumn: {
+                xs: "span 12",
+                md: "span 6",
+                lg: "span 3",
+                xl: "span 3",
+              },
+            }}
             bgcolor={colors.primary[400]}
             display="flex"
             alignItems="center"
@@ -71,7 +86,14 @@ const Dashboard: NextPage = () => {
             />
           </Box>
           <Box
-            gridColumn="span 3"
+            sx={{
+              gridColumn: {
+                xs: "span 12",
+                md: "span 6",
+                lg: "span 3",
+                xl: "span 3",
+              },
+            }}
             bgcolor={colors.primary[400]}
             display="flex"
             alignItems="center"
@@ -90,7 +112,14 @@ const Dashboard: NextPage = () => {
             />
           </Box>
           <Box
-            gridColumn="span 3"
+            sx={{
+              gridColumn: {
+                xs: "span 12",
+                md: "span 6",
+                lg: "span 3",
+                xl: "span 3",
+              },
+            }}
             bgcolor={colors.primary[400]}
             display="flex"
             alignItems="center"
@@ -109,7 +138,14 @@ const Dashboard: NextPage = () => {
             />
           </Box>
           <Box
-            gridColumn="span 3"
+            sx={{
+              gridColumn: {
+                xs: "span 12",
+                md: "span 6",
+                lg: "span 3",
+                xl: "span 3",
+              },
+            }}
             bgcolor={colors.primary[400]}
             display="flex"
             alignItems="center"
@@ -138,7 +174,7 @@ const Dashboard: NextPage = () => {
           py="20px"
         >
           <Box
-            gridColumn="span 8"
+            sx={{ gridColumn: { xs: "span 12", md: "span 8" } }}
             gridRow="span 2"
             bgcolor={colors.primary[400]}
           >
@@ -187,7 +223,7 @@ const Dashboard: NextPage = () => {
             </Box>
           </Box>
           <Box
-            gridColumn="span 4"
+            sx={{ gridColumn: { xs: "span 12", md: "span 4" } }}
             gridRow="span 2"
             bgcolor={colors.primary[400]}
             overflow="auto"
@@ -251,8 +287,8 @@ const Dashboard: NextPage = () => {
           py="20px"
         >
           <Box
-            title="go to Pie Page"
-            gridColumn="span 4"
+            title="Pie Page"
+            sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 4" } }}
             gridRow="span 2"
             bgcolor={colors.primary[400]}
             p="30px"
@@ -287,7 +323,7 @@ const Dashboard: NextPage = () => {
           </Box>
 
           <Box
-            gridColumn="span 4"
+            sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 4" } }}
             gridRow="span 2"
             bgcolor={colors.primary[400]}
           >
@@ -313,7 +349,7 @@ const Dashboard: NextPage = () => {
           </Box>
 
           <Box
-            gridColumn="span 4"
+            sx={{ gridColumn: { xs: "span 12", sm: "span 6", md: "span 4" } }}
             gridRow="span 2"
             bgcolor={colors.primary[400]}
             padding="30px"

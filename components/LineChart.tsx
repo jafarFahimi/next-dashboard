@@ -4,7 +4,7 @@ import { tokens } from "styles/theme";
 import { mockLineData } from "../data/mockData";
 
 const LineChart: React.FC<{
-  isCustomLineColors: boolean;
+  isCustomLineColors?: boolean;
   isDashboard: boolean;
 }> = ({ isCustomLineColors = false, isDashboard = false }) => {
   const theme = useTheme();

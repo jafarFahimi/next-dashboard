@@ -10,7 +10,7 @@ type Props = {
   progress: string;
   increase: string;
 };
-
+// nextjs RangeError: Maximum call stack size exceeded // sth calling a comp inside itself
 const StatBox: React.FC<Props> = ({
   title,
   subtitle,
@@ -38,7 +38,6 @@ const StatBox: React.FC<Props> = ({
           <ProgressCircle progress={progress} />
         </Box>
       </Box>
-
       <Box display="flex" justifyContent="space-between" mt="2px">
         <Typography variant="h5" sx={{ color: colors.greenAccent[500] }}>
           {subtitle}

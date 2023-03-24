@@ -1,4 +1,5 @@
 export const geoFeatures = {
+  // from nivo.rocks geography data // settings for chart
   type: "FeatureCollection",
   features: [
     {

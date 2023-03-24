@@ -4,8 +4,7 @@
 
 import { createContext, useMemo, useState } from "react";
 import { createTheme } from "@mui/material/styles";
-import { makeStyles } from "@mui/styles";
-import { Theme } from "@emotion/react";
+// import { makeStyles } from "@mui/styles"; // don't work with react >= 18.0
 
 type ColorModes = "dark" | "light";
 // color design tokens export; based on colorModes export different {color}
@@ -222,11 +221,3 @@ export const useMode = () => {
 
 // This expression is not callable. Type 'never' has no call signatures
 // means; let a:never = {}; a();    a:any solved d problem!
-export const useStyles: any = makeStyles({
-  itemHover: {
-    "& :hover": {
-      opacity: "0.90",
-      textDecoration: "underline",
-    },
-  },
-});

@@ -13,7 +13,7 @@ import PieChartOutlineOutlinedIcon from "@mui/icons-material/PieChartOutlineOutl
 import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
-import { tokens, useStyles } from "../../styles/theme";
+import { tokens } from "../../styles/theme";
 
 type ItemType = {
   title: string;
@@ -26,7 +26,6 @@ type ItemType = {
 const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const styleClasses = useStyles(); // local
 
   return (
     // MenuItem has its own hover effect // rootStyles hover took 10 hr!
@@ -37,9 +36,10 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemType) => {
         ":hover": {
           color: colors.primary[300],
           backgroundColor: "black",
+          opacity: "0.90",
+          textDecoration: "underline",
         },
       }}
-      className={styleClasses.itemHover}
       active={selected === title}
       onClick={() => setSelected(title)}
       icon={icon}

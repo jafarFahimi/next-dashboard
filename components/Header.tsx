@@ -1,4 +1,4 @@
-import { Typography, Box, useTheme } from "@mui/material";
+import { Typography, Box, useTheme, useMediaQuery } from "@mui/material";
 import { tokens } from "styles/theme";
 
 const Header: React.FC<{ title: string; subtitle: string }> = ({
@@ -7,10 +7,12 @@ const Header: React.FC<{ title: string; subtitle: string }> = ({
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const isNonMobile = useMediaQuery("(min-width:400px)");
+
   return (
     <Box mb="30px">
       <Typography
-        variant="h2"
+        variant={`${isNonMobile ? "h2" : "h3"}`}
         color={colors.grey[100]}
         fontWeight="bold"
         sx={{ m: "0 0 5px 0" }}

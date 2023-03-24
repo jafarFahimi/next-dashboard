@@ -32,21 +32,20 @@ const Dashboard: NextPage = () => {
       {/* HEADER */}
       <Box display="flex" justifyContent="space-between" alignItems="center">
         <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
-        <Box>
-          <Button
-            sx={{
-              bgcolor: colors.blueAccent[700],
-              color: colors.grey[100],
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px",
-              marginRight: { md: "10px" },
-            }}
-          >
-            <DownloadOutlinedIcon sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
-        </Box>
+        <Button
+          sx={{
+            bgcolor: colors.blueAccent[700],
+            color: colors.grey[100],
+            fontSize: "14px",
+            fontWeight: "bold",
+            padding: "10px",  
+            marginRight: { md: "10px" },
+            marginBottom: "20px",
+          }}
+        >
+          <DownloadOutlinedIcon sx={{ mr: "10px" }} />
+          Download Reports
+        </Button>
       </Box>
 
       {/* GRID & CHARTS */}
@@ -57,7 +56,6 @@ const Dashboard: NextPage = () => {
           gridTemplateColumns="repeat(12, 1fr)"
           gridAutoRows="140px"
           gap="20px"
-          
         >
           <Box
             sx={{

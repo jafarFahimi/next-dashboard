@@ -1,14 +1,16 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { tokens } from "styles/theme";
 import ProgressCircle from "./ProgressCircle";
+import { ReactElement } from "react";
 
 type Props = {
   title: string;
   subtitle: string;
-  icon: string;
+  icon: ReactElement;
   progress: string;
   increase: string;
 };
+
 const StatBox: React.FC<Props> = ({
   title,
   subtitle,
@@ -33,9 +35,10 @@ const StatBox: React.FC<Props> = ({
           </Typography>
         </Box>
         <Box>
-          <ProgressCircle progress={progress} size="" />
+          <ProgressCircle progress={progress} />
         </Box>
       </Box>
+
       <Box display="flex" justifyContent="space-between" mt="2px">
         <Typography variant="h5" sx={{ color: colors.greenAccent[500] }}>
           {subtitle}
